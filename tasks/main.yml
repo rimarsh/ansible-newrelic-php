@@ -26,6 +26,16 @@
        - default.yml
       paths:
        - "../vars/"
+  when: newrelic_php_version != "7.0"
+
+- include_vars: "{{ item }}"
+  with_first_found:
+    - files:
+       - Debian-7.yml
+       - default.yml
+      paths:
+       - "../vars/"
+  when: newrelic_php_version == "7.0"
 
 - name: Configure New Relic PHP Agent
   template:
