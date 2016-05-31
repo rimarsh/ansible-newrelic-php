@@ -1,4 +1,20 @@
 ---
-php_d_path: /etc/php5/fpm/conf.d
-php_fpm_service: php5-fpm
-apache_service: apache2
+branch : "v{{ newrelic_php_version | first }}"
+
+newrelic_vars:
+  v5:
+    newrelic_php_mods_config_path: /etc/php5/mods-available
+    newrelic_php_fpm_conf_d_path: /etc/php5/fpm/conf.d
+    newrelic_php_fpm_service: php5-fpm
+    newrelic_apache_service: apache2
+
+  v7:
+    newrelic_php_mods_config_path: /etc/php/7.0/mods-available
+    newrelic_php_fpm_conf_d_path: /etc/php/7.0/fpm/conf.d
+    newrelic_php_fpm_service: php7.0-fpm
+    newrelic_apache_service: apache2
+
+newrelic_php_mods_config_path: "{{ newrelic_vars[branch]['newrelic_php_mods_config_path']}}"
+newrelic_php_fpm_conf_d_path: "{{ newrelic_vars[branch]['newrelic_php_fpm_conf_d_path']}}"
+newrelic_php_fpm_service: "{{ newrelic_vars[branch]['newrelic_php_fpm_service']}}"
+newrelic_apache_service: "{{ newrelic_vars[branch]['newrelic_apache_service']}}"

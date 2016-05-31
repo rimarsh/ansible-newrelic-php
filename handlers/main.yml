@@ -6,9 +6,10 @@
     - Restart PHP-FPM
 
 - name: Restart PHP-FPM
-  service: name={{ php_fpm_service }} state=restarted
+  service: name={{ newrelic_php_fpm_service }} state=restarted
   ignore_errors: yes
 
+#TODO: dirtry hack. A better approach is needed.
 - name: Remove ini
   file:
     path="{{ item }}"
@@ -16,4 +17,5 @@
   with_items:
     - /etc/php5/cli/conf.d/newrelic.ini
     - /etc/php5/fpm/conf.d/newrelic.ini
-  when: "ansible_distribution_release  == 'trusty'"
+    - /etc/php/7.0/cli/conf.d/newrelic.ini
+    - /etc/php/7.0/fpm/conf.d/newrelic.ini

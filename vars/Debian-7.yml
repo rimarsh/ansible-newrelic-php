@@ -1,4 +1,0 @@
----
-php_d_path: /etc/php/7.0/fpm/conf.d
-php_fpm_service: php7.0-fpm
-apache_service: apache2
