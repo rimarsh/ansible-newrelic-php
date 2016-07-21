@@ -33,7 +33,7 @@
     dest: "{{ newrelic_php_mods_config_path }}/newrelic.ini"
     group: root
     owner: root
-    mode: 0640
+    mode: 0644
   notify:
     - Run New Relic Installer
   when: newrelic_loaded_os_family|default(False) != False
