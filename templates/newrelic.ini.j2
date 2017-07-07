@@ -58,7 +58,7 @@ newrelic.license = "{{ newrelic_license_key }}"
 ; Default: none
 ; Info   : Sets the name of the file to send log messages to.
 ;
-newrelic.logfile = "/var/log/newrelic/php_agent.log"
+newrelic.logfile = "{{ newrelic_logfile }}"
 
 ;
 ; Setting: newrelic.loglevel
@@ -71,7 +71,7 @@ newrelic.logfile = "/var/log/newrelic/php_agent.log"
 ;          Must be one of the following values:
 ;            always, error, warning, info, verbose, debug, verbosedebug
 ;
-;newrelic.loglevel = "info"
+newrelic.loglevel = "{{ newrelic_loglevel }}"
 
 ;
 ; Setting: newrelic.appname
@@ -116,7 +116,7 @@ newrelic.appname = "{{ newrelic_appname }}"
 ; Default: none
 ; Info   : Sets the name of the file to send daemon log messages to.
 ;
-newrelic.daemon.logfile = "/var/log/newrelic/newrelic-daemon.log"
+newrelic.daemon.logfile = "{{ newrelic_daemon_logfile }}"
 
 ;
 ; Setting: newrelic.daemon.loglevel
@@ -129,7 +129,7 @@ newrelic.daemon.logfile = "/var/log/newrelic/newrelic-daemon.log"
 ;          Must be one of the following values:
 ;            always, error, warning, info, verbose, debug, verbosedebug
 ;
-;newrelic.daemon.loglevel = "info"
+newrelic.daemon.loglevel = "{{ newrelic_daemon_loglevel }}"
 
 ;
 ; Setting: newrelic.daemon.port
@@ -144,7 +144,7 @@ newrelic.daemon.logfile = "/var/log/newrelic/newrelic-daemon.log"
 ;          use a normal TCP socket on the port specified. This may be easier
 ;          to use if you are using a chroot environment.
 ;
-;newrelic.daemon.port = "/tmp/.newrelic.sock"
+newrelic.daemon.port = "{{ newrelic_daemon_port }}"
 
 ;
 ; Setting: newrelic.daemon.ssl
@@ -154,7 +154,7 @@ newrelic.daemon.logfile = "/var/log/newrelic/newrelic-daemon.log"
 ; Info   : Sets whether or not communication with New Relic data collectors
 ;          should use a secure HTTP connection or not.
 ;
-;newrelic.daemon.ssl = true
+;newrelic.daemon.ssl = "{{ newrelic_daemon_ssl }}"
 
 ;
 ; Setting: newrelic.daemon.proxy
@@ -172,7 +172,7 @@ newrelic.daemon.logfile = "/var/log/newrelic/newrelic-daemon.log"
 ;             user:password@hostname
 ;             user:password@hostname:port
 ;
-;newrelic.daemon.proxy = ""
+newrelic.daemon.proxy = "{{ newrelic_daemon_proxy }}"
 
 ;
 ; Setting: newrelic.daemon.pidfile
@@ -183,7 +183,7 @@ newrelic.daemon.logfile = "/var/log/newrelic/newrelic-daemon.log"
 ;          (PID) in. This file is used by the daemon startup and shutdown
 ;          script to determine whether or not the daemon is already running.
 ;
-;newrelic.daemon.pidfile = ""
+newrelic.daemon.pidfile = "{{ newrelic_daemon_pidfile }}"
 
 ;
 ; Setting: newrelic.daemon.location
@@ -195,7 +195,7 @@ newrelic.daemon.logfile = "/var/log/newrelic/newrelic-daemon.log"
 ;          file system, the default daemon location is
 ;          /opt/newrelic/bin/newrelic-daemon.
 ;
-;newrelic.daemon.location = "/usr/bin/newrelic-daemon"
+newrelic.daemon.location = "{{ newrelic_daemon_location }}"
 
 ;
 ; Setting: newrelic.daemon.collector_host
@@ -209,7 +209,7 @@ newrelic.daemon.logfile = "/var/log/newrelic/newrelic-daemon.log"
 ;          circumstances, and then only on instruction from a New Relic sales
 ;          person or support staff member.
 ;
-;newrelic.daemon.collector_host = "collector.newrelic.com"
+newrelic.daemon.collector_host = "{{ newrelic_daemon_collector_host }}"
 
 ;
 ; Setting: newrelic.daemon.dont_launch
@@ -225,7 +225,7 @@ newrelic.daemon.logfile = "/var/log/newrelic/newrelic-daemon.log"
 ;          2 - only CLI agents can start the daemon
 ;          3 - the agent will never start the daemon
 ;
-;newrelic.daemon.dont_launch = 0
+newrelic.daemon.dont_launch = "{{ newrelic_daemon_dont_launch }}
 
 ;
 ; Setting: newrelic.capture_params
@@ -240,7 +240,7 @@ newrelic.daemon.logfile = "/var/log/newrelic/newrelic-daemon.log"
 ;          parameters are simply used for parameters without sensitive data but
 ;          that are meaningful to each transaction then you can enable this.
 ;
-;newrelic.capture_params = false
+newrelic.capture_params = "{{ newrelic_capture_params }}"
 
 ; Setting: newrelic.ignored_params
 ; Type   : string
@@ -250,7 +250,7 @@ newrelic.daemon.logfile = "/var/log/newrelic/newrelic-daemon.log"
 ;          capturing is enabled above. You can use this to filter out sensitive
 ;          user data that may appear as a URL parameter.
 ;
-;newrelic.ignored_params = ""
+newrelic.ignored_params = "{{ newrelic_ignored_params }}"
 
 ;
 ; Setting: newrelic.error_collector.enabled
@@ -262,7 +262,7 @@ newrelic.daemon.logfile = "/var/log/newrelic/newrelic-daemon.log"
 ;          Please also note that your New Relic subscription level may force
 ;          this to be disabled regardless of any value you set for it.
 ;
-;newrelic.error_collector.enabled = true
+newrelic.error_collector.enabled = "{{ newrelic_error_collector_enabled }}"
 
 ;
 ; Setting: newrelic.error_collector.record_database_errors
@@ -275,7 +275,7 @@ newrelic.daemon.logfile = "/var/log/newrelic/newrelic-daemon.log"
 ;          collection. This is only obeyed if the error collector is enabled
 ;          above and the account subscription level permits error trapping.
 ;
-;newrelic.error_collector.record_database_errors = false
+newrelic.error_collector.record_database_errors = "{{ newrelic_error_collector_record_database_errors }}"
 
 ;
 ; Setting: newrelic.error_collector.prioritize_api_errors
@@ -286,7 +286,7 @@ newrelic.daemon.logfile = "/var/log/newrelic/newrelic-daemon.log"
 ;          notice an error, if this is set to true then assign the highest
 ;          priority to such errors.
 ;
-;newrelic.error_collector.prioritize_api_errors = false
+newrelic.error_collector.prioritize_api_errors = "{{ newrelic_error_collector_prioritize_api_errors }}"
 
 ;
 ; Setting: newrelic.browser_monitoring.auto_instrument
@@ -297,7 +297,7 @@ newrelic.daemon.logfile = "/var/log/newrelic/newrelic-daemon.log"
 ;          When enabled will cause the agent to insert a header and a footer
 ;          in HTML output that will time the actual end-user experience.
 ;
-;newrelic.browser_monitoring.auto_instrument = true
+newrelic.browser_monitoring.auto_instrument = "{{ newrelic_browser_monitoring_auto_instrument }}"
 
 ;
 ; Setting: newrelic.transaction_tracer.enabled
@@ -313,7 +313,7 @@ newrelic.daemon.logfile = "/var/log/newrelic/newrelic-daemon.log"
 ;          note that TT's may be disabled by your account subscription level
 ;          regardless of what you set here.
 ;
-;newrelic.transaction_tracer.enabled = true
+newrelic.transaction_tracer.enabled = "{{ newrelic_transaction_tracer_enabled }}"
 
 ;
 ; Setting: newrelic.transaction_tracer.threshold
@@ -327,7 +327,7 @@ newrelic.daemon.logfile = "/var/log/newrelic/newrelic-daemon.log"
 ;          Thus the threshold changes according to your apdex_t setting. This
 ;          is the default.
 ;
-;newrelic.transaction_tracer.threshold = "apdex_f"
+;newrelic.transaction_tracer.threshold = "{{ newrelic_transaction_tracer_threshold }}"
 
 ;
 ; Setting: newrelic.transaction_tracer.detail
@@ -341,7 +341,7 @@ newrelic.daemon.logfile = "/var/log/newrelic/newrelic-daemon.log"
 ;
 ;          In earlier releases of the agent this was known as "top100".
 ;
-;newrelic.transaction_tracer.detail = 1
+newrelic.transaction_tracer.detail = "{{ newrelic_transaction_tracer_detail }}"
 
 ;
 ; Setting: newrelic.transaction_tracer.slow_sql
@@ -352,7 +352,7 @@ newrelic.daemon.logfile = "/var/log/newrelic/newrelic-daemon.log"
 ;          record the top 10 slowest SQL calls along with a stack trace of
 ;          where the call occurred in your code.
 ;
-;newrelic.transaction_tracer.slow_sql = true
+newrelic.transaction_tracer.slow_sql = "{{ newrelic_transaction_tracer_slow_sql }}"
 
 ;
 ; Setting: newrelic.transaction_tracer.stack_trace_threshold
@@ -362,7 +362,7 @@ newrelic.daemon.logfile = "/var/log/newrelic/newrelic-daemon.log"
 ; Info   : Sets the threshold above which the New Relic agent will record a
 ;          stack trace for a transaction trace.
 ;
-;newrelic.transaction_tracer.stack_trace_threshold = 500
+newrelic.transaction_tracer.stack_trace_threshold = "{{ newrelic_transaction_tracer_stack_trace_threshold }}"
 
 ;
 ; Setting: newrelic.transaction_tracer.explain_enabled
@@ -373,7 +373,7 @@ newrelic.daemon.logfile = "/var/log/newrelic/newrelic-daemon.log"
 ;          PostgreSQL databases for slow SQL calls. The threshold for
 ;          requesting explain plans is defined below.
 ;
-;newrelic.transaction_tracer.explain_enabled = true
+newrelic.transaction_tracer.explain_enabled = "{{ newrelic_transaction_tracer_explain_enabled }}"
 
 ;
 ; Setting: newrelic.transaction_tracer.explain_threshold
@@ -387,7 +387,7 @@ newrelic.daemon.logfile = "/var/log/newrelic/newrelic-daemon.log"
 ;          refer to the agent release notes to see when it becomes available.
 ;          Only relevant if explain_enabled above is set to true.
 ;
-;newrelic.transaction_tracer.explain_threshold = 500
+newrelic.transaction_tracer.explain_threshold = "{{ newrelic_transaction_tracer_explain_threshold }}"
 
 ;
 ; Setting: newrelic.transaction_tracer.record_sql
@@ -400,7 +400,7 @@ newrelic.daemon.logfile = "/var/log/newrelic/newrelic-daemon.log"
 ;          has considerable security implications as it can expose sensitive
 ;          and private customer data.
 ;
-;newrelic.transaction_tracer.record_sql = "obfuscated"
+newrelic.transaction_tracer.record_sql = "{{ newrelic_transaction_tracer_record_sql }}"
 
 ; Setting: newrelic.transaction_tracer.custom
 ; Type   : string
@@ -411,7 +411,7 @@ newrelic.daemon.logfile = "/var/log/newrelic/newrelic-daemon.log"
 ;          set newrelic.transaction_tracer.detail to 0. This can be a comma-
 ;          separated list of function or class method names.
 ;
-;newrelic.transaction_tracer.custom = ""
+newrelic.transaction_tracer.custom = "{{ newrelic_transaction_tracer_custom }}"
 
 ;
 ; Setting: newrelic.framework
@@ -426,7 +426,7 @@ newrelic.daemon.logfile = "/var/log/newrelic/newrelic-daemon.log"
 ;            mediawiki, symfony, wordpress, yii, zend or no_framework.
 ;          Note that "drupal" covers only Drupal 6 and 7.
 ;
-;newrelic.framework = ""
+newrelic.framework = "{{ newrelic_framework }}"
 
 ;
 ; Setting: newrelic.webtransaction.name.remove_trailing_path
@@ -439,7 +439,7 @@ newrelic.daemon.logfile = "/var/log/newrelic/newrelic-daemon.log"
 ;          would cause the "/xyz/zy" to be stripped from a URL such as
 ;          "/path/to/foo.php/xyz/zy".
 ;
-;newrelic.webtransaction.name.remove_trailing_path = false
+newrelic.webtransaction.name.remove_trailing_path = "{{ newrelic_webtransaction_name_remove_trailing_path }}"
 
 ;
 ; Setting: newrelic.webtransaction.name.functions
@@ -455,7 +455,7 @@ newrelic.daemon.logfile = "/var/log/newrelic/newrelic-daemon.log"
 ;          and the function names specified here will be used to name the
 ;          transaction.
 ;
-;newrelic.webtransaction.name.functions = ""
+newrelic.webtransaction.name.functions = "{{ newrelic_webtransaction_name_functions }}"
 
 ;
 ; Setting: newrelic.webtransaction.name.files
@@ -466,7 +466,7 @@ newrelic.daemon.logfile = "/var/log/newrelic/newrelic-daemon.log"
 ;          names instead of function names. Accepts standard POSIX regular
 ;          expressions.
 ;
-;newrelic.webtransaction.name.files = ""
+newrelic.webtransaction.name.files = "{{ newrelic_webtransaction_name_files }}"
 
 ;
 ; Setting: newrelic.daemon.auditlog
@@ -481,7 +481,7 @@ newrelic.daemon.logfile = "/var/log/newrelic/newrelic-daemon.log"
 ;          This file must be a different file the the newrelic.daemon.logfile
 ;          setting above. If you set it to the same name, then audit logging will be
 ;          silently ignored.
-;newrelic.daemon.auditlog = "/var/log/newrelic/audit.log"
+newrelic.daemon.auditlog = "{{ newrelic_daemon_auditlog }}"
 
 ;
 ; Setting: newrelic.analytics_events.enabled
@@ -492,7 +492,7 @@ newrelic.daemon.logfile = "/var/log/newrelic/newrelic-daemon.log"
 ;          New Relic UI to show additional information such as histograms at
 ;          the cost of additional daemon memory and collector communication.
 ;
-;newrelic.analytics_events.enabled = true
+newrelic.analytics_events.enabled = "{{ newrelic_analytics_events_enabled }}"
 
 ;
 ; Setting: newrelic.transaction_tracer.capture_attributes
@@ -502,7 +502,7 @@ newrelic.daemon.logfile = "/var/log/newrelic/newrelic-daemon.log"
 ; info   : Attach custom parameters created using newrelic_add_custom_parameter
 ;          to transaction traces.
 ;
-;newrelic.transaction_tracer.capture_attributes = true
+newrelic.transaction_tracer.capture_attributes = "{{ newrelic_transaction_tracer_capture_attributes }}"
 
 ;
 ; Setting: newrelic.error_collector.capture_attributes
@@ -512,7 +512,7 @@ newrelic.daemon.logfile = "/var/log/newrelic/newrelic-daemon.log"
 ; info   : Attach custom parameters created using newrelic_add_custom_parameter
 ;          to traced errors.
 ;
-;newrelic.error_collector.capture_attributes = true
+newrelic.error_collector.capture_attributes = "{{ newrelic_error_collector_capture_attributes }}"
 
 ;
 ; Setting: newrelic.analytics_events.capture_attributes
@@ -522,7 +522,7 @@ newrelic.daemon.logfile = "/var/log/newrelic/newrelic-daemon.log"
 ; info   : Attach custom parameters created using newrelic_add_custom_parameter
 ;          to transaction analytic events.
 ;
-;newrelic.analytics_events.capture_attributes = true
+newrelic.analytics_events.capture_attributes = "{{ newrelic_analytics_events_capture_attributes }}"
 
 ;
 ; Setting: newrelic.browser_monitoring.capture_attributes
@@ -534,4 +534,4 @@ newrelic.daemon.logfile = "/var/log/newrelic/newrelic-daemon.log"
 ;          the custom parameters will be obfuscated and put into the real
 ;          user monitoring Javascript injected into pages.
 ;
-;newrelic.browser_monitoring.capture_attributes = false
+newrelic.browser_monitoring.capture_attributes = "{{ newrelic_browser_monitoring_capture_attributes }}"
