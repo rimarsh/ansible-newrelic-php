@@ -40,7 +40,8 @@ newrelic_webtransaction_name_remove_trailing_path: false
 newrelic_webtransaction_name_functions: ""
 newrelic_webtransaction_name_files: ""
 
-newrelic_daemon_auditlog: "/var/log/newrelic/audit.log"
+# set to if you need it /var/log/newrelic/audit.log
+newrelic_daemon_auditlog: ""
 newrelic_analytics_events_enabled: true
 newrelic_transaction_tracer_capture_attributes: true
 newrelic_error_collector_capture_attributes: true
