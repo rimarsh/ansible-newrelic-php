@@ -47,3 +47,6 @@ newrelic_transaction_tracer_capture_attributes: true
 newrelic_error_collector_capture_attributes: true
 newrelic_analytics_events_capture_attributes: true
 newrelic_browser_monitoring_capture_attributes: false
+
+# Should we restart fpm after install/upgrade?
+newrelic_restart_php_fpm: True
