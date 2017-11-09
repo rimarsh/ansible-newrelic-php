@@ -8,6 +8,7 @@
 - name: Restart PHP-FPM
   service: name={{ newrelic_php_fpm_service }} state=restarted
   ignore_errors: yes
+  when: newrelic_restart_php_fpm
 
 #TODO: dirtry hack. A better approach is needed.
 - name: Remove ini
