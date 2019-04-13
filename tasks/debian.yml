@@ -3,10 +3,19 @@
   set_fact:
     newrelic_loaded_os_family: "{{ ansible_os_family }}"
 
-# NOTE: Despite being called php5, this package works with all versions.
-# See https://docs.newrelic.com/docs/agents/php-agent/installation/php-agent-installation-ubuntu-debian
+- name: Debian | Trust New Relic GPG key
+  apt_key:
+    url: 'https://download.newrelic.com/548C16BF.gpg'
+
+- name: Debian | Configure New Relic apt repository
+  apt_repository:
+    repo: 'deb http://apt.newrelic.com/debian/ newrelic non-free'
+
 - name: Debian | Install New Relic PHP Agent
   apt:
-    pkg: newrelic-php5
+    name: "{{ newrelic_package }}"
+    state: "{{ newrelic_package_state | default(apt_package_state) }}"
+    update_cache: yes
+    cache_valid_time: "{{ apt_cache_valid_time }}"
   notify:
     - Run New Relic Installer

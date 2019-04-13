@@ -1,6 +1,10 @@
 ---
 # defaults file for praseodym.newrelic-php
-newrelic_php_version: "5.6"
+newrelic_php_version: "7.3"
+# NOTE: Despite being called php5, this package works with all versions.
+# See https://docs.newrelic.com/docs/agents/php-agent/installation/php-agent-installation-ubuntu-debian
+newrelic_package: newrelic-php5
+newrelic_package_state: latest
 
 newrelic_enabled: "true"
 newrelic_logfile: "/var/log/newrelic/php_agent.log"
